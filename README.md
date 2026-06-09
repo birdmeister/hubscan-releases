@@ -10,4 +10,4 @@ manifest. Source code lives in a private repository; only built artifacts and
 
 These are populated automatically by the release pipeline on each version tag.
 
-HubScan is a Better Call Birdman trade name (KvK 84948396). Support: martin@emlx.nl
+HubScan is a Better Call Birdman trade name (KvK 84948396). Support: info@hubscan.nl
