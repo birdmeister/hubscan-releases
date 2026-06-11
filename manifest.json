@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Added\n- **Access-drift pillar.** The fourth pillar is now a scored part of the audit,\n  not a stub. `scanners/access.py` derives governance signals from the user list\n  the seat scan already fetches (no new HubSpot calls): Super-Admin proliferation\n  (admins as a share of active users, with a two-admin floor), inactive Super\n  Admins (admins with zero measured activity), and stale super-admin grants\n  (deactivated users still flagged admin). The report renders them as a\n  RAG-banded signal table (matching Data Quality), and the health score is now\n  genuinely cross-pillar \u2014 Data Quality **and** Access Drift feed the 0\u2013100\n  number. Verified against live portals: the super-admin count matches HubSpot's\n  own \"Super Admin\" permission-set user count.\n  - A permission-set sprawl signal was prototyped but **dropped**: live portals\n    return only `\"0\"` for `hs_assigned_permission_sets`, which maps to the super\n    admins \u2014 not a usable permission-set inventory (it misses unassigned sets and\n    overlaps the super-admin signal). The `permission-sets` probe stays for\n    future work on HubSpot's permission-sets/roles API. See PROBE_FINDINGS.\n\n### Changed\n- **Client-facing report now on the HubScan design system.** The seat-audit HTML\n  report (`seat_audit.html.j2`) \u2014 the artifact partners hand to clients \u2014 adopts\n  the design system: the HubScan logo + slate-navy header rule, serif headline\n  for the savings figure and health score (financial-statement gravitas),\n  RAG severity *badges* in place of emoji, and the tokenised palette/typography.\n  Tokens are inlined (the report stays a single self-contained, print-friendly\n  file). Header now reads \"Prepared for <portal>\". The partner-only new-pricing\n  sidecar keeps the previous styling for now.",
+    "notes": "### Added\n- **Portal-locked (trial) licenses.** A license can now carry an optional\n  `portal_ids` claim; `scan` and `probe` verify the connected portal against it\n  (via the already-probed `/account-info/2026-03/details` endpoint, recorded in\n  the trace like every call) and fail closed on a mismatch. Paid licenses omit\n  the claim and stay unrestricted. `tools/issue_license.py issue` gains a\n  repeatable `--portal-id` flag, the ledger records the lock, and `list` shows\n  it. This makes the partner trial safe to offer: a trial key covers the\n  partner's own portal plus the client portal(s) they pick, instead of their\n  entire client base.",
     "sha256": {
-      "hubscan-macos-arm64": "af34ca9a0788a00626d44969919b7daaf3ed688e4dcf60de7fa88c24085a2866",
-      "hubscan-windows-x64.exe": "2f730362f14e915337cf645b08c49c1c52a9947d8d4cb2eb1be69bdfcf437dfb"
+      "hubscan-macos-arm64": "3ed94eb3c8d28dfdf9093783747bf140f4cb887be8eaf5f329c62354d2c3680d",
+      "hubscan-windows-x64.exe": "befc51a1ecd650ac6ac8a749b4c48b533efe320766809ac2075455bd5c62a6b7"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.7.0",
-    "version": "0.7.0"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.8.0",
+    "version": "0.8.0"
   },
   "yanked": []
 }
