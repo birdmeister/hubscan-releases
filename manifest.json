@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Added\n- **Portal-locked (trial) licenses.** A license can now carry an optional\n  `portal_ids` claim; `scan` and `probe` verify the connected portal against it\n  (via the already-probed `/account-info/2026-03/details` endpoint, recorded in\n  the trace like every call) and fail closed on a mismatch. Paid licenses omit\n  the claim and stay unrestricted. `tools/issue_license.py issue` gains a\n  repeatable `--portal-id` flag, the ledger records the lock, and `list` shows\n  it. This makes the partner trial safe to offer: a trial key covers the\n  partner's own portal plus the client portal(s) they pick, instead of their\n  entire client base.",
+    "notes": "### Added\n- **Marketing-contact bloat (licensing/cost signal).** A new `scanners/marketing.py`\n  counts marketable contacts (`hs_marketable_status = \"true\"`) and the idle slice\n  pushing the portal into a higher marketing-contacts tier. Engagement is measured\n  from **opens OR clicks** (`hs_email_last_open_date` / `hs_email_last_click_date`):\n  opens are MPP-noisy, clicks survive MPP, so a contact is idle only when neither\n  fired. Never-engaged = both properties absent (`NOT_HAS_PROPERTY`); engaged-long-ago\n  = had engagement but none within the staleness window (derived as\n  `total \u2212 never \u2212 recently`, where recently-engaged is an OR of `GTE`-cutoff\n  groups). `cost.compute_marketing_cost` turns that into a \u20ac/year saving. Read-only\n  and count-only (shared `scanners.count_search` helper), degrades to a missing-scope\n  callout on a 403. The seat-audit report (markdown + HTML) gains a\n  **Marketing-contact bloat** section and `scan` prints a one-line summary.\n  - **Two valuation modes.** HubSpot sells marketing contacts as *committed tiers*,\n    not metered usage, so with the invoice in hand a `[<portal>.marketing_pricing]`\n    table (`included` / `purchased` / `monthly_eur`) drives a **purchased-vs-used**\n    saving \u2014 the reclaimable capacity (slack already over-bought + the idle contacts\n    a cleanup frees) valued at the contract's effective per-contact rate, mirroring\n    the seat audit's unused-seat logic. Without the invoice, a rough per-edition EUR\n    block estimate (`cost._MARKETING_CONTACT_PRICING_EUR`) is the fallback; a non-EUR\n    currency or unmodelled tier degrades to **flag-only** (counts, no \u20ac).\n  - A `marketable-contacts` probe verifies the filters on a live portal.",
     "sha256": {
-      "hubscan-macos-arm64": "3ed94eb3c8d28dfdf9093783747bf140f4cb887be8eaf5f329c62354d2c3680d",
-      "hubscan-windows-x64.exe": "befc51a1ecd650ac6ac8a749b4c48b533efe320766809ac2075455bd5c62a6b7"
+      "hubscan-macos-arm64": "a44712eaff1524a002cf7afd840b042536525dd5ec695297b77657a0bc87d26a",
+      "hubscan-windows-x64.exe": "d1b16042a78965320e5bdd8c3849f7ce0aa0da5cc0be1772fa30ac0b10dfc122"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.8.0",
-    "version": "0.8.0"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.9.0",
+    "version": "0.9.0"
   },
   "yanked": []
 }
