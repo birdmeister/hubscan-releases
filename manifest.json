@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Fixed\n- **\"Records owned by deactivated users\" was always zero.** The signal could not\n  fire: HubSpot hides deactivated users from the owner list unless you ask for\n  archived owners, so the audit never had an id to match records against, and\n  every report showed nothing to clean up. It now reports what is really there,\n  and on real portals that is thousands of records rather than none. Data-quality\n  findings that mention stranded records are worth a re-run.",
+    "notes": "### Fixed\n- **The GUI no longer asks for an output folder it ignores.** The setup form took\n  a folder, saved it, then wrote reports somewhere else, and its hint named a\n  location the GUI never uses. The GUI keeps reports in one predictable place, and\n  the result page now tells you where. Set `output_dir` and use the CLI when you\n  want them elsewhere.",
     "sha256": {
-      "hubscan-macos-arm64": "971f00323e8cc6e8c35b4ad91f848c892d1a9eca3ad231a9eda112db5f7a9a7c",
-      "hubscan-windows-x64.exe": "481f2a88e8ec74bb9b0d8c1ed30bc18beb8ec0044eec812d34b7ef8c4dc0f618"
+      "hubscan-macos-arm64": "d6bbcbe08a8d4632f04855583a886d425ec94bd471225eb846facafb1386c3bb",
+      "hubscan-windows-x64.exe": "0bbbf0f2d5e53a140afb3154694329acb65fc3a02be6f86e53a728c2ad72d279"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.11.1",
-    "version": "0.11.1"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.11.2",
+    "version": "0.11.2"
   },
   "yanked": []
 }
