@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Added\n- **Automation health: sequence senders that will fail.** The scan now flags\n  enabled workflows that enroll contacts into a sequence sent as a deactivated\n  user. A deactivated user holds no paid Sales or Service seat and no connected\n  inbox, so those sends fail silently inside HubSpot. The report names the\n  affected senders so you can reassign them or switch the workflow off. This reads\n  the one slice of HubSpot's automation issues the API exposes; the full runtime\n  issue list is not reachable from the API.",
+    "notes": "### Changed\n- **Automation health now catches senders with no connected inbox.** A sequence\n  can only send from a user who holds a paid Sales or Service seat *and* has\n  connected a personal inbox. The scan already flagged deactivated senders; it now\n  also flags a live sender whose inbox is not connected, and -- for workflows that\n  send as the contact owner -- any owner who holds a seat but has no connected\n  inbox, so their enrolled contacts silently fail to send. These are named in the\n  report so you can connect an inbox or reassign the sender. Read for free from the\n  user data the scan already fetches; no new permissions.",
     "sha256": {
-      "hubscan-macos-arm64": "b1d348aec3cfc5b04033e4005725a3a1f57e830b4794f591f209c5be45f9360c",
-      "hubscan-windows-x64.exe": "c4d78009185637d2b43f3666874d5b0535c65d3609a1d1dc430d9e2031da864b"
+      "hubscan-macos-arm64": "cf903ad0fdaa86b8af6ee98b23b222711c7284741a143b7c757c016aa0f4ae56",
+      "hubscan-windows-x64.exe": "df9d7add8a34b84b46566dd5510e4811b44087da54f0ac584ed431c9ff680a6a"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.0",
-    "version": "0.12.0"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.1",
+    "version": "0.12.1"
   },
   "yanked": []
 }
