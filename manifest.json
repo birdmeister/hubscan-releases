@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Fixed\n- **The GUI no longer asks for an output folder it ignores.** The setup form took\n  a folder, saved it, then wrote reports somewhere else, and its hint named a\n  location the GUI never uses. The GUI keeps reports in one predictable place, and\n  the result page now tells you where. Set `output_dir` and use the CLI when you\n  want them elsewhere.",
+    "notes": "### Added\n- **Automation health: sequence senders that will fail.** The scan now flags\n  enabled workflows that enroll contacts into a sequence sent as a deactivated\n  user. A deactivated user holds no paid Sales or Service seat and no connected\n  inbox, so those sends fail silently inside HubSpot. The report names the\n  affected senders so you can reassign them or switch the workflow off. This reads\n  the one slice of HubSpot's automation issues the API exposes; the full runtime\n  issue list is not reachable from the API.",
     "sha256": {
-      "hubscan-macos-arm64": "d6bbcbe08a8d4632f04855583a886d425ec94bd471225eb846facafb1386c3bb",
-      "hubscan-windows-x64.exe": "0bbbf0f2d5e53a140afb3154694329acb65fc3a02be6f86e53a728c2ad72d279"
+      "hubscan-macos-arm64": "b1d348aec3cfc5b04033e4005725a3a1f57e830b4794f591f209c5be45f9360c",
+      "hubscan-windows-x64.exe": "c4d78009185637d2b43f3666874d5b0535c65d3609a1d1dc430d9e2031da864b"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.11.2",
-    "version": "0.11.2"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.0",
+    "version": "0.12.0"
   },
   "yanked": []
 }
