@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Changed\n- **Automation health now catches senders with no connected inbox.** A sequence\n  can only send from a user who holds a paid Sales or Service seat *and* has\n  connected a personal inbox. The scan already flagged deactivated senders; it now\n  also flags a live sender whose inbox is not connected, and -- for workflows that\n  send as the contact owner -- any owner who holds a seat but has no connected\n  inbox, so their enrolled contacts silently fail to send. These are named in the\n  report so you can connect an inbox or reassign the sender. Read for free from the\n  user data the scan already fetches; no new permissions.",
+    "notes": "### Changed\n- **The no-connected-inbox owner check now weighs how many contacts they own.**\n  Holding a Sales seat with no connected inbox is normal for someone who builds\n  sequences but never sends them, so flagging every such user was noisy. The scan\n  now counts the contacts each owns and reports only those above a threshold\n  (default 25, tune with `uninboxed_owner_min_contacts` under\n  `[<portal>.thresholds]`), and shows the contact count as the blast radius. A\n  role mailbox that owns hundreds of contacts still surfaces; a colleague who owns\n  a handful no longer does.",
     "sha256": {
-      "hubscan-macos-arm64": "cf903ad0fdaa86b8af6ee98b23b222711c7284741a143b7c757c016aa0f4ae56",
-      "hubscan-windows-x64.exe": "df9d7add8a34b84b46566dd5510e4811b44087da54f0ac584ed431c9ff680a6a"
+      "hubscan-macos-arm64": "94a8114642bd5dcfd8d7785e594d1ac178bc88ae593845bc6d6d34953302b4bf",
+      "hubscan-windows-x64.exe": "1409a0ecefb9c35425832fe782b4b33067a7d378b54441eb75134139c564c767"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.1",
-    "version": "0.12.1"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.2",
+    "version": "0.12.2"
   },
   "yanked": []
 }
