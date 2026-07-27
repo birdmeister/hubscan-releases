@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Changed\n- **The no-connected-inbox owner check now weighs how many contacts they own.**\n  Holding a Sales seat with no connected inbox is normal for someone who builds\n  sequences but never sends them, so flagging every such user was noisy. The scan\n  now counts the contacts each owns and reports only those above a threshold\n  (default 25, tune with `uninboxed_owner_min_contacts` under\n  `[<portal>.thresholds]`), and shows the contact count as the blast radius. A\n  role mailbox that owns hundreds of contacts still surfaces; a colleague who owns\n  a handful no longer does.",
+    "notes": "### Fixed\n- The HTML report's no-connected-inbox line now reads \"1 user holds\" for a single\n  owner, instead of the awkward \"1 user(s) hold\".\n- **The app's input fields are visible again.** The boxes you paste a licence key\n  and a portal token into were outlined in a grey too faint to make out against\n  white, on a bright screen or tired eyes especially. They now use a border that\n  meets the contrast standard for a form control. Same for every other field in\n  the setup screens.",
     "sha256": {
-      "hubscan-macos-arm64": "94a8114642bd5dcfd8d7785e594d1ac178bc88ae593845bc6d6d34953302b4bf",
-      "hubscan-windows-x64.exe": "1409a0ecefb9c35425832fe782b4b33067a7d378b54441eb75134139c564c767"
+      "hubscan-macos-arm64": "9ec20decbed869a0526da29e15b8d2ee6d179f2ad4a3051403b63743714f5d69",
+      "hubscan-windows-x64.exe": "28ac3de6f9ec16c5ab1af9d44cc57ccbd1ad31afb5224961ba0ba0c7e2c53558"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.2",
-    "version": "0.12.2"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.3",
+    "version": "0.12.3"
   },
   "yanked": []
 }
