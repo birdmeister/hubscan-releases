@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Fixed\n- The HTML report's no-connected-inbox line now reads \"1 user holds\" for a single\n  owner, instead of the awkward \"1 user(s) hold\".\n- **The app's input fields are visible again.** The boxes you paste a licence key\n  and a portal token into were outlined in a grey too faint to make out against\n  white, on a bright screen or tired eyes especially. They now use a border that\n  meets the contrast standard for a form control. Same for every other field in\n  the setup screens.",
+    "notes": "### Fixed\n- **The agent-readiness write map now sees HubSpot's newer AI workflow actions.**\n  Actions such as \"Fill Smart Property\", phone validation and ticket copy name the\n  field they write using a different convention than the classic workflow actions,\n  so the properties they wrote were missing from the collision map, with no warning\n  that anything had been skipped. A report could therefore call a field clear when a\n  workflow was already writing it. Those writes are now counted, including actions\n  that write several fields at once. Fields a workflow only *reads* are still\n  excluded, so nothing is over-reported.",
     "sha256": {
-      "hubscan-macos-arm64": "9ec20decbed869a0526da29e15b8d2ee6d179f2ad4a3051403b63743714f5d69",
-      "hubscan-windows-x64.exe": "28ac3de6f9ec16c5ab1af9d44cc57ccbd1ad31afb5224961ba0ba0c7e2c53558"
+      "hubscan-macos-arm64": "7c6197f3a49d8d0bb81291ca85979ad893de65f89aa0b7d29434750f70884aec",
+      "hubscan-windows-x64.exe": "7265699d91a6da279318c33520b3dac40e77d63dab4b3da448e6690e51c520c4"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.3",
-    "version": "0.12.3"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.4",
+    "version": "0.12.4"
   },
   "yanked": []
 }
