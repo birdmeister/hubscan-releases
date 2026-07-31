@@ -61,24 +61,25 @@ place, point each machine at a synced/network copy with
 In the client's HubSpot, create a **Service Key** under **Settings →
 Integrations → Service Keys → Create service key**. (Not *Private Apps*: that is
 a different menu and a different credential, even though the token looks the
-same.) On the **Scopes** tab, search each name below and tick it. All 15 are
+same.) On the **Scopes** tab, search each name below and tick it. All 16 are
 read-only:
 
 ```
 crm.objects.contacts.read      crm.schemas.custom.read
 crm.objects.companies.read     crm.objects.custom.read
 crm.objects.deals.read         settings.users.read
-tickets                        automation.sequences.read
-crm.objects.owners.read        automation
-crm.objects.users.read         account-info.security.read
-crm.objects.forecasts.read     scheduler.meetings.meeting-link.read
-content
+tickets                        settings.users.teams.read
+crm.objects.owners.read        automation.sequences.read
+crm.objects.users.read         automation
+crm.objects.forecasts.read     account-info.security.read
+content                        scheduler.meetings.meeting-link.read
 ```
 
 Two things to know before you go looking for more:
 
-- `tickets` is the whole scope name, and `automation` is needed *on top of*
-  `automation.sequences.read`. They look redundant; they are not.
+- `tickets` is the whole scope name; `automation` is needed *on top of*
+  `automation.sequences.read`, and `settings.users.teams.read` *on top of*
+  `settings.users.read`. Those pairs look redundant; they are not.
 - **`crm.objects.{tasks,notes,calls}.read` have no toggle anywhere.** HubSpot
   grants those reads implicitly. Nothing to tick, nothing to ask support for.
 
