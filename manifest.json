@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Fixed\n- **Three of the scopes we told you to enable do not exist.** The token guide\n  listed read scopes for tasks, notes and calls that HubSpot shows no toggle for,\n  in any menu, on any tier. Anyone setting up a new portal was sent hunting for\n  checkboxes that were never there. Those reads are granted implicitly and have\n  always worked; the guide now lists only the 15 scopes you can actually tick,\n  and says so explicitly. If a report ever warns that tasks or notes were not\n  measured, it now tells you to reissue the Service Key instead of pointing at a\n  scope you cannot grant. On a first run the guide also opens by itself rather\n  than hiding behind a fold, since that is the one moment someone needs it.\n\n### Added\n- **A proper Service Key guide, shipped with every release.** `SERVICE_KEY.md`\n  covers where the key lives (and the two credentials it is easy to confuse it\n  with), what each scope is read for so you can answer a client's security\n  questions, what a client loses by withholding one, and what the three kinds of\n  `403` actually mean: a missing scope, a stale key that needs reissuing, or a\n  Professional portal correctly refusing an Enterprise-only endpoint. The quick\n  start now carries the full scope list too, instead of pointing vaguely at \"the\n  read scopes HubScan needs\".",
+    "notes": "### Fixed\n- **The Service Key guide is now readable without downloading it.** It shipped\n  only as a release attachment, which GitHub hands you as a file rather than a\n  page, and the in-app updater fetches just the binary: anyone who updated from\n  the banner never got the guide at all. It is now published as a page you can\n  open and send on, and the app links straight to it. The quick start is\n  published the same way, and the download page now lists both instead of\n  leaving them as attachments you had to notice.",
     "sha256": {
-      "hubscan-macos-arm64": "8ab990581257ec27da9d0d3e902a5da03d428682f1a6d7bc4202c48d4a159173",
-      "hubscan-windows-x64.exe": "aae695389096a62ae3750d8dcd6329ba16d14ae7629024772569cd81e4c06a36"
+      "hubscan-macos-arm64": "ac0da72258a1536e241b318e834e1c5549e4dde4c46c3e7cdf2b659e6da4019f",
+      "hubscan-windows-x64.exe": "b770515b99a95eb521fa59dac1c9303a8f6f17c7a63106abe04f3de3c46c7cf7"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.5",
-    "version": "0.12.5"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.6",
+    "version": "0.12.6"
   },
   "yanked": []
 }
