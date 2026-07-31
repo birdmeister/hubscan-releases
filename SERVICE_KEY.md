@@ -30,8 +30,8 @@ delete the key at any time to cut off access.
 
 ## 2. The scopes to tick
 
-On the **Scopes** tab, search each name and tick it. All 15 are read-only and
-all 15 are findable:
+On the **Scopes** tab, search each name and tick it. All 16 are read-only and
+all 16 are findable:
 
 | Scope | What HubScan reads with it |
 | --- | --- |
@@ -44,14 +44,15 @@ all 15 are findable:
 | `crm.objects.forecasts.read` | Forecast submissions, so forecasting managers do not read as inactive |
 | `crm.schemas.custom.read` | Which custom objects exist |
 | `crm.objects.custom.read` | Records in those custom objects |
-| `settings.users.read` | The portal's user list, super-admin flags and teams: the access-drift pillar |
+| `settings.users.read` | The portal's user list and super-admin flags: the access-drift pillar |
+| `settings.users.teams.read` | Teams and their members, to spot workflow notifications addressed to an empty team |
 | `automation.sequences.read` | Sequences per user |
 | `automation` | Workflows, for automation health and the agent-readiness write map |
 | `account-info.security.read` | Audit logs: last login per user, and portal tier |
 | `scheduler.meetings.meeting-link.read` | Meeting links, split personal vs round-robin |
 | `content` | Marketing email send volume, for the new-pricing credit estimate |
 
-Two of these trip people up:
+Three of these trip people up:
 
 - **`tickets` is the whole scope name.** There is no `crm.objects.tickets.read`;
   the granular form does not exist for tickets.
@@ -60,11 +61,15 @@ Two of these trip people up:
   Without plain `automation` the workflow scan goes dark, and HubScan can then
   recommend downgrading the seat of a user who is the fixed sender on a live
   sequence-enrolling workflow, which breaks that workflow.
+- **`settings.users.teams.read` is required on top of `settings.users.read`.**
+  Same trap, same shape: the user scope does not cover teams. Without it HubScan
+  cannot tell an empty team from one it simply could not read, so it stays quiet
+  about workflow notifications addressed to a team that no longer has members.
 
 Both are checked by `probe`, so a miss is caught before you scan.
 
 Tick the scopes, create the key, and copy the **access token** into HubScan.
-Professional and Enterprise portals grant all 15; a Professional portal simply
+Professional and Enterprise portals grant all 16; a Professional portal simply
 has less behind some of them. A couple are tied to what the portal owns, so a
 portal without Sales Hub Professional cannot grant the sequences scope at all,
 and HubScan will report that signal as unavailable.
