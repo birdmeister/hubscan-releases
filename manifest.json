@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Fixed\n- **The agent-readiness write map now sees HubSpot's newer AI workflow actions.**\n  Actions such as \"Fill Smart Property\", phone validation and ticket copy name the\n  field they write using a different convention than the classic workflow actions,\n  so the properties they wrote were missing from the collision map, with no warning\n  that anything had been skipped. A report could therefore call a field clear when a\n  workflow was already writing it. Those writes are now counted, including actions\n  that write several fields at once. Fields a workflow only *reads* are still\n  excluded, so nothing is over-reported.",
+    "notes": "### Fixed\n- **Three of the scopes we told you to enable do not exist.** The token guide\n  listed read scopes for tasks, notes and calls that HubSpot shows no toggle for,\n  in any menu, on any tier. Anyone setting up a new portal was sent hunting for\n  checkboxes that were never there. Those reads are granted implicitly and have\n  always worked; the guide now lists only the 15 scopes you can actually tick,\n  and says so explicitly. If a report ever warns that tasks or notes were not\n  measured, it now tells you to reissue the Service Key instead of pointing at a\n  scope you cannot grant. On a first run the guide also opens by itself rather\n  than hiding behind a fold, since that is the one moment someone needs it.\n\n### Added\n- **A proper Service Key guide, shipped with every release.** `SERVICE_KEY.md`\n  covers where the key lives (and the two credentials it is easy to confuse it\n  with), what each scope is read for so you can answer a client's security\n  questions, what a client loses by withholding one, and what the three kinds of\n  `403` actually mean: a missing scope, a stale key that needs reissuing, or a\n  Professional portal correctly refusing an Enterprise-only endpoint. The quick\n  start now carries the full scope list too, instead of pointing vaguely at \"the\n  read scopes HubScan needs\".",
     "sha256": {
-      "hubscan-macos-arm64": "7c6197f3a49d8d0bb81291ca85979ad893de65f89aa0b7d29434750f70884aec",
-      "hubscan-windows-x64.exe": "7265699d91a6da279318c33520b3dac40e77d63dab4b3da448e6690e51c520c4"
+      "hubscan-macos-arm64": "8ab990581257ec27da9d0d3e902a5da03d428682f1a6d7bc4202c48d4a159173",
+      "hubscan-windows-x64.exe": "aae695389096a62ae3750d8dcd6329ba16d14ae7629024772569cd81e4c06a36"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.4",
-    "version": "0.12.4"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.12.5",
+    "version": "0.12.5"
   },
   "yanked": []
 }
