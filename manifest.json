@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Added\n- **Prospectors and quote builders no longer look inactive.** HubScan measured\n  contacts, deals, tasks, notes and forecasts, but not leads or quotes. Someone\n  whose job is prospecting leaves no trace in any of those, so they showed up\n  with zero activity and could draw a downgrade for a seat they demonstrably\n  use: the most damaging mistake this report can make. Both are now counted per\n  user, drive the recommendation, and get their own report and CSV column.\n  Checked against three live portals, where five people were being put forward\n  for a downgrade purely because their prospecting was invisible. Neither\n  implies a Sales Hub seat on its own, so the report never argues for a dearer\n  seat than the evidence supports.\n- **Marketing emails that declare the same language two ways are now flagged.**\n  HubSpot matches a subscription type's translation on the exact language code,\n  with no fallback from a regional code to its base. Tagging some emails `nl`\n  and others `nl-nl` therefore splits your sends across two translation sets,\n  and the code without a translation shows its preference centre and unsubscribe\n  text in the portal default rather than the language the email is written in.\n  Nothing in HubSpot surfaces this, since every email looks right on its own.\n  The report names each split with the emails and sends behind each code. With\n  `communication_preferences.read` granted it also catches the sharper case:\n  a subscription type translated into `nl` while its emails go out as `nl-nl`,\n  so the translation you wrote is never the one your readers see.\n\n### Changed\n- **Three more read scopes on the Service Key: `crm.objects.leads.read`,\n  `crm.objects.quotes.read` and `communication_preferences.read`.** The token\n  guide and quick start now list all 19, and `probe` checks each like every\n  other scope. Keys issued before this keep working: every affected finding\n  degrades and says what it skipped, rather than staying silent and letting you\n  read a gap as a clean result.",
+    "notes": "### Fixed\n- **The marketing-email language finding no longer overstates its case.** When a\n  portal declares one language under two codes, the report said the code without\n  a translation shows its preference centre and unsubscribe text in the portal\n  default. That only holds if the subscription is actually translated into that\n  language: where nothing is translated, both codes fall back to the same text\n  and nothing is mis-rendering. The report now distinguishes the two, and where\n  nothing is translated it says so plainly while flagging the split as a tidy-up\n  that becomes a real defect the moment a translation is added for one code.\n  Found by running the check against a portal with 30 such emails and no\n  translations at all, where the old wording condemned a correct setup.",
     "sha256": {
-      "hubscan-macos-arm64": "042c359fb181f4fe153fec0e997eb82525066581c3dff44f1801f068020108c7",
-      "hubscan-windows-x64.exe": "2995cc971aca0e352e328c27accb4b2a13247daa5f4867200331919cffbb571d"
+      "hubscan-macos-arm64": "2c624ef8a1ba8787301ffe37f6e880c392d7689e82e1d71dbf9fc42efdac694d",
+      "hubscan-windows-x64.exe": "432b00915c61fa0b8826094d10b8210fc7faf5085a89fa689c57134181bbb687"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.14.0",
-    "version": "0.14.0"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.14.1",
+    "version": "0.14.1"
   },
   "yanked": []
 }
