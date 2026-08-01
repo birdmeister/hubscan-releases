@@ -30,8 +30,8 @@ delete the key at any time to cut off access.
 
 ## 2. The scopes to tick
 
-On the **Scopes** tab, search each name and tick it. All 16 are read-only and
-all 16 are findable:
+On the **Scopes** tab, search each name and tick it. All 19 are read-only and
+all 19 are findable:
 
 | Scope | What HubScan reads with it |
 | --- | --- |
@@ -42,6 +42,8 @@ all 16 are findable:
 | `crm.objects.owners.read` | The owner list, including archived owners (how deactivated users are found) |
 | `crm.objects.users.read` | The user list and their assigned seats |
 | `crm.objects.forecasts.read` | Forecast submissions, so forecasting managers do not read as inactive |
+| `crm.objects.leads.read` | Owned leads, so prospectors do not read as inactive |
+| `crm.objects.quotes.read` | Quotes built per user, so quote builders do not read as inactive |
 | `crm.schemas.custom.read` | Which custom objects exist |
 | `crm.objects.custom.read` | Records in those custom objects |
 | `settings.users.read` | The portal's user list and super-admin flags: the access-drift pillar |
@@ -51,6 +53,7 @@ all 16 are findable:
 | `account-info.security.read` | Audit logs: last login per user, and portal tier |
 | `scheduler.meetings.meeting-link.read` | Meeting links, split personal vs round-robin |
 | `content` | Marketing email send volume, for the new-pricing credit estimate |
+| `communication_preferences.read` | Subscription-type translations, to check a marketing email is sent in a language its subscription is translated into |
 
 Three of these trip people up:
 
@@ -69,7 +72,7 @@ Three of these trip people up:
 Both are checked by `probe`, so a miss is caught before you scan.
 
 Tick the scopes, create the key, and copy the **access token** into HubScan.
-Professional and Enterprise portals grant all 16; a Professional portal simply
+Professional and Enterprise portals grant all 19; a Professional portal simply
 has less behind some of them. A couple are tied to what the portal owns, so a
 portal without Sales Hub Professional cannot grant the sequences scope at all,
 and HubScan will report that signal as unavailable.
