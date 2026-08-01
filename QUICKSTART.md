@@ -61,7 +61,7 @@ place, point each machine at a synced/network copy with
 In the client's HubSpot, create a **Service Key** under **Settings →
 Integrations → Service Keys → Create service key**. (Not *Private Apps*: that is
 a different menu and a different credential, even though the token looks the
-same.) On the **Scopes** tab, search each name below and tick it. All 16 are
+same.) On the **Scopes** tab, search each name below and tick it. All 19 are
 read-only:
 
 ```
@@ -72,7 +72,9 @@ tickets                        settings.users.teams.read
 crm.objects.owners.read        automation.sequences.read
 crm.objects.users.read         automation
 crm.objects.forecasts.read     account-info.security.read
-content                        scheduler.meetings.meeting-link.read
+crm.objects.leads.read         scheduler.meetings.meeting-link.read
+crm.objects.quotes.read        content
+communication_preferences.read
 ```
 
 Two things to know before you go looking for more:
