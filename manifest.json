@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Fixed\n- **The marketing-email language finding no longer overstates its case.** When a\n  portal declares one language under two codes, the report said the code without\n  a translation shows its preference centre and unsubscribe text in the portal\n  default. That only holds if the subscription is actually translated into that\n  language: where nothing is translated, both codes fall back to the same text\n  and nothing is mis-rendering. The report now distinguishes the two, and where\n  nothing is translated it says so plainly while flagging the split as a tidy-up\n  that becomes a real defect the moment a translation is added for one code.\n  Found by running the check against a portal with 30 such emails and no\n  translations at all, where the old wording condemned a correct setup.",
+    "notes": "### Added\n- **Workflows left switched off are now counted.** Pausing one is normal;\n  leaving it parked for a year is clutter every admin reads past. The report\n  says how many are off, how many nobody has touched in six months, and names\n  the longest-abandoned with the date last edited. Costs no extra API calls.\n- **Owner rotations that can never assign anyone are now flagged.** HubSpot only\n  hands a record to someone holding a Sales or Service seat, so a workflow\n  rotating ownership between teams of Core or view-only users fails every time,\n  leaving the record with whatever owner it had. The report names the workflow,\n  the teams, and why nobody in them is eligible. It reports only what the seat\n  rule proves.\n- **The collision surface now says when a workflow writes to an associated\n  record.** Some actions set a property on the associated contact or company,\n  not the record they run on. The property name alone hides that, exactly where\n  the report tells you to check before pointing an agent at a field.\n\n### Fixed\n- **Stale contacts read as near-zero on every portal.** The signal filtered\n  every object on `hs_lastmodifieddate`, which HubSpot leaves empty on virtually\n  every *contact*, and an empty value slips straight through a \"last modified\n  before\" filter. Contacts untouched for months counted as fresh, so every\n  report so far showed roughly 0% stale contacts: the reassuring answer, and the\n  wrong one. Contacts now use `lastmodifieddate`; other objects were always\n  correct. On a reference EU1 Enterprise portal the stale share went from 0.7%\n  to 8.6%.\n- **A hygiene signal that cannot be measured now says so instead of reading\n  green.** Before counting stale records, HubScan checks the date property it\n  filters on is actually populated. Where it is largely empty the report says\n  staleness could not be measured for that object, and why. An unaskable\n  question should never look like a clean answer.\n- **Names containing a \"|\" no longer break the tables they appear in.** A team\n  called \"Automation | SysAdmin\" split its row into extra columns: still\n  rendered, just misaligned.",
     "sha256": {
-      "hubscan-macos-arm64": "2c624ef8a1ba8787301ffe37f6e880c392d7689e82e1d71dbf9fc42efdac694d",
-      "hubscan-windows-x64.exe": "432b00915c61fa0b8826094d10b8210fc7faf5085a89fa689c57134181bbb687"
+      "hubscan-macos-arm64": "ce3b2ea61a5313fb652628fed3723b476c40aac6b5afcadadfe8bc428a7d78ed",
+      "hubscan-windows-x64.exe": "05711f8830435265102e88519853b02d4cb5a990b41a5471afe3fd9596e191f9"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.14.1",
-    "version": "0.14.1"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.15.0",
+    "version": "0.15.0"
   },
   "yanked": []
 }
