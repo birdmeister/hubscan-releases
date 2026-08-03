@@ -1,13 +1,13 @@
 {
   "min_supported": "0.1.0",
   "stable": {
-    "notes": "### Added\n- **Workflows left switched off are now counted.** Pausing one is normal;\n  leaving it parked for a year is clutter every admin reads past. The report\n  says how many are off, how many nobody has touched in six months, and names\n  the longest-abandoned with the date last edited. Costs no extra API calls.\n- **Owner rotations that can never assign anyone are now flagged.** HubSpot only\n  hands a record to someone holding a Sales or Service seat, so a workflow\n  rotating ownership between teams of Core or view-only users fails every time,\n  leaving the record with whatever owner it had. The report names the workflow,\n  the teams, and why nobody in them is eligible. It reports only what the seat\n  rule proves.\n- **The collision surface now says when a workflow writes to an associated\n  record.** Some actions set a property on the associated contact or company,\n  not the record they run on. The property name alone hides that, exactly where\n  the report tells you to check before pointing an agent at a field.\n\n### Fixed\n- **Stale contacts read as near-zero on every portal.** The signal filtered\n  every object on `hs_lastmodifieddate`, which HubSpot leaves empty on virtually\n  every *contact*, and an empty value slips straight through a \"last modified\n  before\" filter. Contacts untouched for months counted as fresh, so every\n  report so far showed roughly 0% stale contacts: the reassuring answer, and the\n  wrong one. Contacts now use `lastmodifieddate`; other objects were always\n  correct. On a reference EU1 Enterprise portal the stale share went from 0.7%\n  to 8.6%.\n- **A hygiene signal that cannot be measured now says so instead of reading\n  green.** Before counting stale records, HubScan checks the date property it\n  filters on is actually populated. Where it is largely empty the report says\n  staleness could not be measured for that object, and why. An unaskable\n  question should never look like a clean answer.\n- **Names containing a \"|\" no longer break the tables they appear in.** A team\n  called \"Automation | SysAdmin\" split its row into extra columns: still\n  rendered, just misaligned.",
+    "notes": "### Fixed\n- **A portal whose workflows cannot be read now says so, instead of reporting\n  nothing.** When HubSpot refuses access to workflows, every workflow-derived\n  check silently produced an empty result: no broken senders, no notifications\n  that reach nobody, no rotations. The report looked like a clean portal. It now\n  records what HubSpot answered, so the difference between \"nothing to report\"\n  and \"we could not look\" survives into the report.\n- **The switched-off-workflows finding no longer fires when there is nothing to\n  report.** It appeared for any paused workflow, including one paused last week,\n  and then said in its own words that none had been left untouched. The signal\n  is workflows that are off *and* abandoned, so that is now what triggers it,\n  and the sentence leads with that number.",
     "sha256": {
-      "hubscan-macos-arm64": "ce3b2ea61a5313fb652628fed3723b476c40aac6b5afcadadfe8bc428a7d78ed",
-      "hubscan-windows-x64.exe": "05711f8830435265102e88519853b02d4cb5a990b41a5471afe3fd9596e191f9"
+      "hubscan-macos-arm64": "98c730da2190c057f1d9ae970b6579d8b9b28bcb6a53ce07a6df7b01f6b53903",
+      "hubscan-windows-x64.exe": "4e5f3d89cfe88aa33f503a06f065e235181f79a09059b48115b5efc40eb2d1f1"
     },
-    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.15.0",
-    "version": "0.15.0"
+    "url": "https://github.com/birdmeister/hubscan-releases/releases/tag/v0.15.1",
+    "version": "0.15.1"
   },
   "yanked": []
 }
