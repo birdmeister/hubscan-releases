@@ -38,7 +38,7 @@ all 19 are findable:
 | `crm.objects.contacts.read` | Contacts created per user, ownership hygiene, marketing-contact bloat |
 | `crm.objects.companies.read` | Company hygiene counts (no owner, stale, missing fields) |
 | `crm.objects.deals.read` | Deal ownership and deal-hygiene counts |
-| `tickets` | Ticket hygiene counts |
+| `tickets` | Ticket hygiene counts, and tickets owned per user so Service agents do not read as inactive |
 | `crm.objects.owners.read` | The owner list, including archived owners (how deactivated users are found) |
 | `crm.objects.users.read` | The user list and their assigned seats |
 | `crm.objects.forecasts.read` | Forecast submissions, so forecasting managers do not read as inactive |
