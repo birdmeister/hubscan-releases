@@ -43,7 +43,34 @@ Confirm it runs (use the filename you downloaded, e.g. `hubscan-macos-arm64` or
 ./hubscan-macos-arm64 --version
 ```
 
-## 2. Add your license key
+## 2. Pick how you want to drive it
+
+**The app.** Run it with no arguments beyond `gui` and HubScan opens in your
+browser:
+
+```bash
+./hubscan-macos-arm64 gui
+```
+
+On a fresh machine it walks you through the rest of this guide: paste your licence
+key, add a portal (with the scope list on screen and the token saved for next
+time), then run the audit and read the report in the page. Nothing is uploaded:
+it is a page served by a program on your own machine. It listens on your machine
+only, and refuses anything arriving from another website, so a page you happen to
+have open elsewhere cannot reach it.
+
+Each portal also gets a **settings** page there, for the things you learn during
+an engagement rather than on day one: what the client actually pays per seat, how
+many seats the contract covers, and the thresholds the audit judges against.
+
+Stop it with the **Stop HubScan server** button on any page, or `Ctrl+C`.
+
+**The command line.** Steps 3 to 5 below. You need it for `probe`, for scripting,
+and any time you want the reports somewhere specific.
+
+Both drive the same audit and produce the same reports.
+
+## 3. Add your license key
 
 Save the `license.key` you were given to `~/.hubscan/license.key`:
 
@@ -56,7 +83,7 @@ One key works for every consultant at your firm. To share it from a single
 place, point each machine at a synced/network copy with
 `HUBSCAN_LICENSE_FILE=/path/to/license.key`.
 
-## 3. Connect a HubSpot portal
+## 4. Connect a HubSpot portal
 
 In the client's HubSpot, create a **Service Key** under **Settings →
 Integrations → Service Keys → Create service key**. (Not *Private Apps*: that is
@@ -103,7 +130,7 @@ a read the first time a portal misbehaves, because a `403` that does *not* say
 `MISSING_SCOPES` is usually a stale key that needs reissuing, not a scope
 problem.
 
-## 4. Run the audit
+## 5. Run the audit
 
 ```bash
 ./hubscan scan --portal=clientname
@@ -116,8 +143,29 @@ Reports (Markdown, HTML, CSV, plus an API-call trace) are written to
 ## Updates
 
 HubScan ships frequent improvements. When a newer version is available the tool
-prints a one-line notice — you choose whether and when to download it; nothing
-updates automatically.
+prints a one-line notice after a scan. Nothing updates on its own; you decide
+when.
+
+To see what is available and read the release notes without changing anything:
+
+```bash
+./hubscan-macos-arm64 update --check
+```
+
+To install it, replacing the file you are running:
+
+```bash
+./hubscan-macos-arm64 update
+```
+
+It asks before replacing anything, downloads only from the official releases
+repository, and checks both a vendor signature and a checksum before swapping the
+binary. If any of that fails it stops and says so rather than installing.
+
+It also tells you how old the release information is. A signature proves *who*
+published something, never *when*, so if that line ever says the information is
+months old, treat it as a sign this machine may not be seeing current releases,
+and check the releases page directly.
 
 ## Uninstalling & cleaning up
 
