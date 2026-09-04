@@ -59,6 +59,13 @@ it is a page served by a program on your own machine. It listens on your machine
 only, and refuses anything arriving from another website, so a page you happen to
 have open elsewhere cannot reach it.
 
+**Sending the report to a client.** Open it in its own tab from the result
+page, then Print and choose *Save as PDF*. Switch **Headers and footers** off
+in the print dialog first: browsers print the `file://` path of your own
+machine into the footer, which is not what you want on a client's document.
+The report is styled for print, so tables repeat their column headers across
+pages and the colour coding survives.
+
 Each portal also gets a **settings** page there, for the things you learn during
 an engagement rather than on day one: what the client actually pays per seat, how
 many seats the contract covers, and the thresholds the audit judges against.
